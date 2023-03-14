@@ -1,0 +1,86 @@
+{
+  "type": "ORDERS",
+  "productRank": [
+    {
+      "id": 2,
+      "name": "Pant B",
+      "price": 12.44,
+      "category": "Pants",
+      "imageUrl": "/assets/products/pant_b.jpg",
+      "rank": 1,
+      "score": 4
+    },
+    {
+      "id": 8,
+      "name": "Sweater B",
+      "price": 26.48,
+      "category": "Sweaters",
+      "imageUrl": "/assets/products/sweater_b.jpg",
+      "rank": 2,
+      "score": 4
+    },
+    {
+      "id": 1,
+      "name": "Pant A",
+      "price": 10.13,
+      "category": "Pants",
+      "imageUrl": "/assets/products/pant_a.jpg",
+      "rank": 3,
+      "score": 3
+    },
+    {
+      "id": 3,
+      "name": "Pant C",
+      "price": 28.88,
+      "category": "Pants",
+      "imageUrl": "/assets/products/pant_c.jpg",
+      "rank": 4,
+      "score": 3
+    },
+    {
+      "id": 4,
+      "name": "Dress A",
+      "price": 76.33,
+      "category": "Dresses",
+      "imageUrl": "/assets/products/dress_a.jpg",
+      "rank": 5,
+      "score": 3
+    },
+    {
+      "id": 9,
+      "name": "Sweater C",
+      "price": 18.78,
+      "category": "Sweaters",
+      "imageUrl": "/assets/products/sweater_c.jpg",
+      "rank": 6,
+      "score": 3
+    },
+    {
+      "id": 6,
+      "name": "Jacket B",
+      "price": 42.58,
+      "category": "Jackets",
+      "imageUrl": "/assets/products/jacket_b.jpg",
+      "rank": 7,
+      "score": 2
+    },
+    {
+      "id": 5,
+      "name": "Jacket A",
+      "price": 36.34,
+      "category": "Jackets",
+      "imageUrl": "/assets/products/jacket_a.jpg",
+      "rank": 8,
+      "score": 1
+    },
+    {
+      "id": 7,
+      "name": "Sweater A",
+      "price": 25.23,
+      "category": "Sweaters",
+      "imageUrl": "/assets/products/sweater_a.jpg",
+      "rank": 9,
+      "score": 1
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+openapi: 3.0.3
+info:
+  title: Inditex ZARA Boost workshop
+  description: |-
+    Inditex ZARA Boost workshop
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: product
+    description: Everything about your Products
+  - name: ranking
+    description: Access to Product Orders Ranking
+  - name: orders
+    description: Everything about Orders
+  - name: report
+    description: Report Summary
+
+paths:
+  /products:
+    get:
+      tags:
+        - product
+      summary: Finds Products
+      operationId: findProducts
+      parameters:
+        - name: category
+          in: query
+          description: Filter By Category
+          required: false
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+            example:
+              - Pants
+              - Dresses
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+  /products/categories:
+    get:
+      tags:
+        - product
+      summary: Finds Producs Categories
+      operationId: findProductsCategories
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                example:
+                  - Pants
+                  - Dresses
+                  - Jackets
+                  - Sweaters
+                items:
+                  $ref: '#/components/schemas/Category'
+  /orders:
+    get:
+      tags:
+        - orders
+      summary: Product Orders
+      operationId: findOrders
+      parameters:
+        - name: limit
+          in: query
+          description: Max number of orders
+          required: true
+          explode: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '400':
+          description: Used to report that `limit` parameter value is out of bounds (1 <= `limit` <= 100)
+  /orders/{orderId}:
+    get:
+      tags:
+        - orders
+      summary: Order Detail
+      operationId: findOrderById
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of order to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDetail'
+        '404':
+          description: Order not found
+  /ranking:
+    get:
+      tags:
+        - ranking
+      summary: Product Order Ranking
+      operationId: ranking
+      parameters:
+        - name: type
+          in: query
+          description: Ranking Type
+          required: true
+          explode: false
+          schema:
+            $ref: '#/components/schemas/RankingType'
+        - name: fromDate
+          in: query
+          description: Date from which to start product sales analysis.
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2023-01-01"
+        - name: toDate
+          in: query
+          description: Limit date for the product sales analysis.
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2023-01-15"        
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ranking'
+  /report-summary:
+    get:
+      tags:
+        - report
+      summary: Report Summary
+      operationId: reportSummary
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportSummary'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Product 1
+        price:
+          type: number
+          format: double
+          example: 39.95
+        category:
+          type: string
+          example: Pants
+        imageUrl:
+          type: string
+          example: /assets/pants_a.jpg
+    Category:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        date:
+          type: string
+          format: date-time
+          example: 2023-02-15T17:32:28Z
+        status:
+          type: string
+          description: Order Status
+          example: approved
+          enum:
+            - placed
+            - approved
+            - delivered
+    OrderDetail:
+      allOf:
+        - $ref: '#/components/schemas/Order'
+      type: object
+      properties:
+        totalPrice:
+          type: number
+          format: double
+          example: 90.95
+        itemsCount:
+          type: integer
+          example: 10
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductOrderItem'
+    ProductOrderItem:
+      allOf:
+        - $ref: '#/components/schemas/Product'
+      type: object
+      properties:
+        quantity:
+          type: integer
+          format: int64
+          example: 3
+    RankingType:
+      type: string
+      description: Ranking Type
+      example: orders
+      enum:
+        - orders
+        - units
+        - amount
+    Ranking:
+      type: object
+      properties:
+        ranking-type:
+          $ref: '#/components/schemas/RankingType'
+        productsRank:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductRank'
+    ProductRank:
+      allOf:
+        - $ref: '#/components/schemas/Product'
+      type: object
+      properties:
+        rank:
+          type: integer
+        score:
+          type: number
+    ReportSummary:
+      type: object
+      properties:
+        totalProducts:
+          type: integer
+          description: Total Products
+          example: 6
+        totalOrders:
+          type: integer
+          description: Total Orders
+          example: 6
+        totalSales:
+          type: number
+          format: double
+          description: Total Sales Import
+          example: 6000.95
+        totalProductsByCategory:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+                example: Pants
+              productsCount:
+                type: integer
+                example: 6

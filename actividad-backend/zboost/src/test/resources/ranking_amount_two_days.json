@@ -1,0 +1,50 @@
+{
+  "type": "AMOUNT",
+  "productRank": [
+    {
+      "id": 4,
+      "name": "Dress A",
+      "price": 76.33,
+      "category": "Dresses",
+      "imageUrl": "/assets/products/dress_a.jpg",
+      "rank": 1,
+      "score": 76.33
+    },
+    {
+      "id": 3,
+      "name": "Pant C",
+      "price": 28.88,
+      "category": "Pants",
+      "imageUrl": "/assets/products/pant_c.jpg",
+      "rank": 2,
+      "score": 28.88
+    },
+    {
+      "id": 8,
+      "name": "Sweater B",
+      "price": 26.48,
+      "category": "Sweaters",
+      "imageUrl": "/assets/products/sweater_b.jpg",
+      "rank": 3,
+      "score": 26.48
+    },
+    {
+      "id": 1,
+      "name": "Pant A",
+      "price": 10.13,
+      "category": "Pants",
+      "imageUrl": "/assets/products/pant_a.jpg",
+      "rank": 4,
+      "score": 20.26
+    },
+    {
+      "id": 2,
+      "name": "Pant B",
+      "price": 12.44,
+      "category": "Pants",
+      "imageUrl": "/assets/products/pant_b.jpg",
+      "rank": 5,
+      "score": 12.44
+    }
+  ]
+}
