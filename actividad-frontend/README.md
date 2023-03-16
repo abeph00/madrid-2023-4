@@ -78,44 +78,38 @@ dejar una captura de pantalla con tus resultados en la carpeta que quieras
 
 Añadiremos un componente para indicar nuestro avatar en la aplicación dentro del componente `Header`.
 
-## Ejercicio 2:
-
-Crea el componente `Filters`, este componente contendrá un selector con categorías de productos.
-
-Luego cambiaremos el componente `<Filters  />` por el `<Placeholder>` en el fichero `app.jsx` (Tienes TODO 😉).
-
->💡 Te recomiendo crear una carpeta `/filters` dentro de la carpeta `/components` para crear el componente y utilizarlo dentro del componente App (`app.jsx`).
-
-
-Enlaza las opciones del selector con los datos de nuestra API, usando el siguiente endpoint:
-
-`/products/categories`
-
->💡 Te recomiendo utilizar [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) para poder consultar a la API
-
-
-### Ejercicio 3:
+### Ejercicio 2:
 
 Crea el componente `Summary`, en este mostraremos tres tarjetas con las cantidades de `pedidos`, `unidades` e `importe`.
 
-Enlaza las cantidades con la API:
+Luego cambiaremos el componente `<Summary  />` por el `<Placeholder>` en el fichero `app.jsx` (Tienes TODO 😉).
+
+>💡 Te recomiendo crear una carpeta `/summary` dentro de la carpeta `/components` para crear el componente y utilizarlo dentro del componente App (`app.jsx`).
+
+
+Enlaza las cantidades con los datos de nuestra API, usando el siguiente endpoint:
 
 `/report-summary`
 
 
-### Ejercicio 4:
+>💡 Te recomiendo utilizar [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) para poder consultar a la API
 
-Crea el componente `Orders`, mostraremos una tabla con el contenido de las órdenes.
-
-Enlaza la tabla con la API:
-
-`/orders`
-
-### Ejercicio 5:
+### Ejercicio 3:
 
 En este ejercicio, deberás crear el componente `Ranking`, que tendrá dos componentes hijos. El primero será una barra de filtros y ordenaciones, y el segundo será el ranking.
 
-#### Ejercicio 5.1:
+#### Ejercicio 3.1:
+
+Crear un ranking de prendas con tarjetas donde se mostrará la imagen de la prenda, el precio y la posición del ranking.
+
+#### Ejercicio 3.2:
+
+Ahora deberás enlazar el selector y las fechas con la siguiente API para que te devuelva un ranking de prendas:
+
+`/ranking`
+
+
+#### Ejercicio 3.3:
 
 En la barra del ranking, se mostrará en el lado izquierdo el título `Ranking` y en el lado derecho un selector con estas opciones:
 
@@ -127,17 +121,9 @@ const TYPES = [
 ];
 ```
 
-Además, se incluirán dos `DatePicker` para indicar la fecha inicio y fecha fin para filtrar los datos.
+#### Ejercicio 3.4:
 
-#### Ejercicio 5.2:
-
-Crear un ranking de prendas con tarjetas donde se mostrará la imagen de la prenda, el precio y la posición del ranking.
-
-#### Ejercicio 5.3:
-
-Ahora deberás enlazar el selector y las fechas con la siguiente API para que te devuelva un ranking de prendas:
-
-`/ranking`
+En la barra del ranking en el lado derecho al lado del selector de tipos, se incluirán dos `DatePicker` para indicar la fecha inicio y fecha fin para filtrar los datos.
 
 
 >💡 Ten en cuenta que la API mock está preparada solo para los tipos, así que tendrás que modificar el mock para que tengan en cuenta las fechas y validar que llegan con este formato `YYYY/MM/DD`.
