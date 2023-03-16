@@ -29,4 +29,25 @@
   padding-top: 16px;
 }
 
+.cards {
+  display: flex;
+  gap: 16px;
+}
 
+.middle {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-weight: lighter;
+}
+
+.size {
+  font-size: 30px;
+  padding-right: 6px;
+}
+
+.list {
+  display: flex;
+  justify-content: left;
+}
